@@ -45,7 +45,7 @@ export class Cache {
         core.exportVariable("SAVE_CACHE_DIR", this.cacheDir);
         core.exportVariable("SAVE_CACHE_KEY", this.cacheKey);
       }
-      return cacheRestored !== null;
+      return cacheRestored !== undefined;
     } catch (error) {
       core.error(
         `Cache.restore -- Error during cache restoration: ${
