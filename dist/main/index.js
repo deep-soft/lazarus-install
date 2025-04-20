@@ -2876,6 +2876,8 @@ class Packages {
     }
     async installPackages(includePackages) {
         core.info(`Requested Lazarus packages: ${includePackages.join(", ")}`);
+        if (includePackages.length == 0)
+            return;
         this.packageData = await this._getPackageList(`${this.baseUrl}/${this.jsonParam}`);
         core.info(`Fetched ${this.packageData.length} package items.`);
         const pkgsToInstall = await this._resolveDependencies(includePackages);
