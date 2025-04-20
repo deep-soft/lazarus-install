@@ -20,11 +20,6 @@ export class Packages {
 
   async installPackages(includePackages: string[]): Promise<void> {
     core.info(`Requested Lazarus packages: ${includePackages.join(", ")}`);
-
-    if ((includePackages.length == 1) && (includePackages[0].length == 0)) {
-      return;
-    }
-
     this.packageData = await this._getPackageList(
       `${this.baseUrl}/${this.jsonParam}`
     );

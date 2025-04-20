@@ -34,7 +34,7 @@ export class Installer {
       core.endGroup();
       core.info("Lazarus installation completed.");
 
-      if (this.packageList.length > 0) {
+      if ((this.packageList.length > 0) && (this.packageList[0].length > 0)) {
         core.startGroup("Installing Additional Packages");
         core.info(`Packages to install: ${this.packageList.join(", ")}`);
         await this.packages.installPackages(this.packageList);
