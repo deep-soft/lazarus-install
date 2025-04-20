@@ -369,7 +369,9 @@ export class Lazarus {
       case "win32":
         let downloadURL: string;
         let downloadPath_WIN: string;
-        let tempDirectory: string = this._getTempDirectory();
+        let setupDirectory = this._getTempDirectory();
+        let tempDirectory = process.env["RUNNER_TEMP"] || "";
+        ok(tempDirectory, "Expected RUNNER_TEMP to be defined");
         let lazarusDir: string = path.join(tempDirectory, 'lazarus');
 
         // Get the URL of the file to download
@@ -378,11 +380,11 @@ export class Lazarus {
         try {
           if (cacheRestored) {
             // Use cached version
-            downloadPath_WIN = path.join(tempDirectory, `lazarus-${this._LazarusVersion}-64.exe`);
+            downloadPath_WIN = path.join(setupDirectory, `lazarus-${this._LazarusVersion}-64.exe`);
             core.info(`_downloadLazarus - Using cache restored into ${downloadPath_WIN}`);
           } else {
             // Perform the download
-            downloadPath_WIN = await tc.downloadTool(downloadURL, path.join(tempDirectory, `lazarus-${this._LazarusVersion}-64.exe`));
+            downloadPath_WIN = await tc.downloadTool(downloadURL, path.join(setupDirectory, `lazarus-${this._LazarusVersion}-64.exe`));
             core.info(`_downloadLazarus - Downloaded into ${downloadPath_WIN}`);
           }
 
@@ -412,11 +414,11 @@ export class Lazarus {
 
             if (cacheRestored) {
                 // Use cached version
-                downloadPath_WIN = path.join(tempDirectory, `lazarus-${this._LazarusVersion}-32.exe`);
+                downloadPath_WIN = path.join(setupDirectory, `lazarus-${this._LazarusVersion}-32.exe`);
                 core.info(`_downloadLazarus - Using cache restored into ${downloadPath_WIN}`);
             } else {
                 // Perform the download
-                downloadPath_WIN = await tc.downloadTool(downloadURL, path.join(tempDirectory, `lazarus-${this._LazarusVersion}-32.exe`));
+                downloadPath_WIN = await tc.downloadTool(downloadURL, path.join(setupDirectory, `lazarus-${this._LazarusVersion}-32.exe`));
                 core.info(`_downloadLazarus - Downloaded into ${downloadPath_WIN}`);
             }
 
