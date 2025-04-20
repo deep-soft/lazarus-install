@@ -2048,7 +2048,7 @@ class Installer {
             await this.lazarus.installLazarus();
             core.endGroup();
             core.info("Lazarus installation completed.");
-            if (this.packageList.length > 0) {
+            if ((this.packageList.length > 0) && (this.packageList[0].length > 0)) {
                 core.startGroup("Installing Additional Packages");
                 core.info(`Packages to install: ${this.packageList.join(", ")}`);
                 await this.packages.installPackages(this.packageList);
@@ -2876,9 +2876,6 @@ class Packages {
     }
     async installPackages(includePackages) {
         core.info(`Requested Lazarus packages: ${includePackages.join(", ")}`);
-        if ((includePackages.length == 1) && (includePackages[0].length == 0)) {
-            return;
-        }
         this.packageData = await this._getPackageList(`${this.baseUrl}/${this.jsonParam}`);
         core.info(`Fetched ${this.packageData.length} package items.`);
         const pkgsToInstall = await this._resolveDependencies(includePackages);
