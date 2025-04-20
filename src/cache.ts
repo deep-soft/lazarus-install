@@ -70,8 +70,10 @@ export class Cache {
         `Cache.save -- Saving cache with Key: ${key}, Directory: ${dir}`
       );
       try {
-        await cache.saveCache([dir], key);
-        core.info("Cache.save -- Cache saved successfully.");
+        const cacheId = await cache.saveCache([dir], key);
+        if (cacheId != -1) {
+          core.info("Cache.save -- Cache saved successfully.");
+        }
       } catch (error) {
         core.warning(
           `Cache.save -- Failed to save cache: ${(error as Error).message}`
