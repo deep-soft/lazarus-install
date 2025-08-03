@@ -8,10 +8,14 @@ import * as fs from "fs";
 
 import { Cache } from "./cache";
 
-const StableVersion = "4.0";
+const StableVersion = "4.2";
 
 const pkgs: object = {
   win32: {
+    v4_2: {
+        laz64: "lazarus-4.2-fpc-3.2.2-win64.exe",
+        laz32: "lazarus-4.2-fpc-3.2.2-cross-i386-win32-win64.exe"
+    },
     v4_0: {
         laz64: "lazarus-4.0-fpc-3.2.2-win64.exe",
         laz32: "lazarus-4.0-fpc-3.2.2-cross-i386-win32-win64.exe"
@@ -22,6 +26,10 @@ const pkgs: object = {
     }
   },
   win64: {
+    v4_2: {
+        laz64: "lazarus-4.2-fpc-3.2.2-win64.exe",
+        laz32: "lazarus-4.2-fpc-3.2.2-cross-i386-win32-win64.exe"
+    },
     v4_0: {
         laz64: "lazarus-4.0-fpc-3.2.2-win64.exe",
         laz32: "lazarus-4.0-fpc-3.2.2-cross-i386-win32-win64.exe"
