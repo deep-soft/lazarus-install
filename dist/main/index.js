@@ -2108,9 +2108,13 @@ const path = __importStar(__nccwpck_require__(6928));
 const assert_1 = __nccwpck_require__(2613);
 const fs = __importStar(__nccwpck_require__(9896));
 const cache_1 = __nccwpck_require__(5914);
-const StableVersion = "4.2";
+const StableVersion = "4.4";
 const pkgs = {
     win32: {
+        v4_4: {
+            laz64: "lazarus-4.4-fpc-3.2.2-win64.exe",
+            laz32: "lazarus-4.4-fpc-3.2.2-cross-i386-win32-win64.exe"
+        },              
         v4_2: {
             laz64: "lazarus-4.2-fpc-3.2.2-win64.exe",
             laz32: "lazarus-4.2-fpc-3.2.2-cross-i386-win32-win64.exe"
@@ -2125,6 +2129,10 @@ const pkgs = {
         }
     },
     win64: {
+        v4_4: {
+            laz64: "lazarus-4.4-fpc-3.2.2-win64.exe",
+            laz32: "lazarus-4.4-fpc-3.2.2-cross-i386-win32-win64.exe"
+        },
         v4_2: {
             laz64: "lazarus-4.2-fpc-3.2.2-win64.exe",
             laz32: "lazarus-4.2-fpc-3.2.2-cross-i386-win32-win64.exe"
